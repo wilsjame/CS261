@@ -15,7 +15,7 @@ void fooA(int* iptr){
 	printf("Address pointed to by iptr:\t%p\n", iptr);
      
      /*Print the address of iptr itself*/
-	printf("Address of iptr itself:\t%x\n", &iptr);
+	printf("Address of iptr itself:\t%p\n", &iptr);
 }
 
 int main(){
@@ -24,7 +24,7 @@ int main(){
 	int x;
 
     /*print the address of x*/
-	printf("Address of x:\t%x\n", &x);
+	printf("Address of x:\t%p\n", &x);
     
     /*Call fooA() with the address of x*/
 	fooA(&x);
