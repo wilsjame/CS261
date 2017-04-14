@@ -46,9 +46,9 @@ void sticky(char* word){
 
 int main(){
     /*Read word from the keyboard using scanf*/
-	char user_input[30];
+	char user_input[100];
 	printf("Enter a word to modify with sticky caps: ");
-	scanf("%s", user_input);
+	scanf("%99s", user_input);
     
     /*Call sticky*/
 	sticky(user_input);
