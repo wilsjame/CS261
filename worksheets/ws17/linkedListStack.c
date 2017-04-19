@@ -39,13 +39,16 @@ int linkedListStackIsEmpty(struct linkedListStack *s){
 
 /* linkedListStackTop returns the value in the firstLink */
 TYPE linkedListStackTop(struct linkedListStack *s){
+	assert(s->firstLink != 0);
 	
 	return s->firstLink->value;
 
 }
 
 void linkedListStackPop(struct linkedListStack *s){
+	assert(s->firstLink != 0);
 	s->firstLink = s->firstLink->next;
+	free(s->firstLink);
 	s->firstLink = 0;
 }
 
