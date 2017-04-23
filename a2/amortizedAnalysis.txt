@@ -1,0 +1,38 @@
+ * amortizedAnalysis.txt
+ * CS261 Assignment 2
+ * Part 2: Amortized Analysis of the Dynamic Array (written)
+
+1.
+a) 56 cost units are spent in the entire process of performing 32 consecutive
+push operation on an empty array which starts out at capacity 8, assuming that
+the array will double capacity each a new item is added to an already full
+dynamic array. 
+
+b) The big-oh complexity for a push is O(n) as N grows large, this is
+the worst case scenario. A better approximation would be an amortized constant
+execution time of O(1)+. 
+
+
+2.
+a) 260 cost units are spent in the entire process of performing 32 consecutive
+push operation on an empty array which starts out at capacity 8, assuming that
+the array will grow by a constant 2 spaces each a new item is added to an already full
+dynamic array. 
+
+b) The big-oh complexity for a push is O(n) as N grows large. 
+
+3. Suppose that a dynamic array stack double its capacity when its full, and
+shrinks (on Pop only) its capacity by half when the array is half full or
+less. The following sequence of N push() and pop() operation will result in
+poor performance (O(n^2) total cost).
+
+a) Push until the stack reaches capacity and doubles. Then pop one value causing the stack to
+shrink by half. 
+
+b)One way to solve this problem would be the change the array's shrinking
+policy to halving the capacity if and only if the size is less than half. For example,
+shrink the capacity to half on a pop operation when the size is at 1/4
+capacity opposed to 1/2 capacity. 
+
+
+
