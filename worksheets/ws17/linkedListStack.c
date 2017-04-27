@@ -47,9 +47,9 @@ TYPE linkedListStackTop(struct linkedListStack *s){
 
 void linkedListStackPop(struct linkedListStack *s){
 	assert(s->firstLink != 0);
-	s->firstLink = s->firstLink->next;
+	struct link *newFirst = s->firstLink->next;
 	free(s->firstLink);
-	s->firstLink = 0;
+	s->firstLink = newFirst;
 }
 
 void linkedListStackFree(struct linkedListStack *s){
