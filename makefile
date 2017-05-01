@@ -1,6 +1,9 @@
 # define C compiler
 CC = gcc
 
+# define C flags
+CFLAGS = -Wall -std=c99
+
 # define C header files
 INCLUDES = 
 
