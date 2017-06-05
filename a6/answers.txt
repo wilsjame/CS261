@@ -1,0 +1,32 @@
+James Wilson (wilsjame)
+4 June 2017
+CS 261 A6 Written
+
+1. Any anagram, for example, 'cinema' and 'iceman', will hash to  the same
+values using hashFunction1 and different values using hashFunction2.
+
+2. hashFunction2 is a superior hash function because it generates more unique
+keys. Therefore, less collisions and a more uniform distribution of key values over each of the different
+buckets. It does this by incorporating the index into the hash function while
+hashFunction1 does not. 
+
+3. No, it is not possible for hashMapSize to return different values when using
+both hash functions on the same input file because an input file that is identical
+will result in the same amount of links.
+
+4. No, it is not possible for the load factor to differ because the load
+factor depends on number of elements and size. Both these values are the same
+regardless of hash function if the input file is the same. Furthermore, the
+load factors will both resize at the same time maintaining equality.
+
+5. Yes, it is possible for the number of empty buckets to differ because the
+number of collisions can differ between the two hash functions.
+
+6. Yes, there are less empty buckets (which is better) because dividing by a
+prime number table capacity results in a more uniformly distributed key value spread over the
+buckets (less collisions). Table capacity is used in the modulus operation to make sure the hash
+value is within the table capacity. There can be more than 2 common factors
+dividing by a non prime number such as 1000 resulting in more values hashing to
+the same bucket (collisions). There can only be two common factors when dividing my a prime
+number such as 997 (1 and 997) resulting in a more values hashing to unique
+buckets. 
