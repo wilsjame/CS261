@@ -53,7 +53,20 @@ char* nextWord(FILE* file)
  */
 void loadDictionary(FILE* file, HashMap* map)
 {
-    // FIXME: implement
+    // FIXME: implement **FIXED**
+    
+    //read dictionary words
+    char *word = nextWord(file);
+
+    //insert dictionary words into a hashtable (buckets)
+    while(word != 0)
+    {
+	    hashMapPut(map, word, 1);
+	    free(word); //mem leak management
+	    word = nextWord(file);
+    }
+
+	free(word); //mem leak management
 }
 
 /**
@@ -66,7 +79,7 @@ void loadDictionary(FILE* file, HashMap* map)
  */
 int main(int argc, const char** argv)
 {
-    // FIXME: implement
+    // FIXME: implement **attempted FIXED**
     HashMap* map = hashMapNew(1000);
     
     FILE* file = fopen("dictionary.txt", "r");
@@ -84,11 +97,41 @@ int main(int argc, const char** argv)
         scanf("%s", inputBuffer);
         
         // Implement the spell checker code here..
-        
-        if (strcmp(inputBuffer, "quit") == 0)
+	
+	if (strcmp(inputBuffer, "quit") == 0)
         {
             quit = 1;
+	    printf("Goodbye!\n");
         }
+	//check if the input hashes to a bucket
+	else if(hashMapContainsKey(map, inputBuffer))
+	{
+		/*calculate hashIndex*/
+		int hashIndex = HASH_FUNCTION(inputBuffer) % hashMapCapacity(map);
+
+		//handle negative values
+		if(hashIndex < 0)
+		{
+			hashIndex += hashMapCapacity(map);
+		}
+
+		//bucket head
+		HashLink *cur = map->table[hashIndex];
+		/********************/
+
+		printf("*****Did you mean?*****\n");
+		//print entire bucket
+		while(cur)
+		{
+			//print all keys in the bucket
+			printf("%s\n", cur->key);
+			cur = cur->next;
+		}
+	}
+	else
+	{
+		printf("Word not found!\n");
+	}
     }
     
     hashMapDelete(map);

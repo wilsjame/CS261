@@ -72,7 +72,7 @@ void hashTableAdd(struct hashTable *ht, TYPE newValue)
 int hashTableContains(struct hashTable *ht, TYPE testElement)
 {
 	int hashIndex = HASH(testElement) % ht->tablesize;
-	hlink *cur;
+	hlink *cur = ht->table[hashIndex];
 
 	while(cur != 0)
 	{
@@ -86,7 +86,7 @@ int hashTableContains(struct hashTable *ht, TYPE testElement)
 
 		cur = cur->next;
 
-	}
+	
 
 	return 0;
 
