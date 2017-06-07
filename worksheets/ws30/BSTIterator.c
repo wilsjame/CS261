@@ -14,17 +14,42 @@ struct BSTIterator
 
 void BSTIteratorInit(struct BSTree *tree, struct BSTIterator *tr)
 {
+	itr->stack = (struct DynArr *)malloc(sizeof(struct DynArr));
+	initDynArr(itr->stk, 4);
+
+	itr->tree = tree;
 
 }
 
 int BSTIteratorHasNext(struct BSTIterator *itr)
 {
 
+	if(itr->stack->size != 0) //if stack is empty
+	{
+		//slide left on root
+		_slideLeft(itr->tree->root, itr);
+	}
+	else
+	{
+		//let n be top of stack, pop topmost element
+		struct Node *n = topDynArray(itr->stack);
+		popDynArray(itr->stk);
+		//slide left on right child of n
+		_slideLeft(n->right, itr);
+	}	
+	
+
+	//return true if the stack is not empty
+	return !isEmptyDynArray(itr->stack);
+	
 }
 
 TYPE BSTIteratorNext(struct BSTIterator *itr)
 {
-
+	struct Node* returnMyValue = dynArrayPop(itr->stk);
+	
+	return returnMyValue->value;
+	
 }
 
 void _slideLeft(struct Node *cur, struct BSTIterator *itr)
