@@ -1,0 +1,50 @@
+CS 261 Data Structure
+Assignment 7 
+James Wilson
+7 June 2017
+
+The program in main.c loads 3 predetermined graphs from files and prints the results of your DFS and
+BFS functions on each pair of vertices. For each pair, path or no path is printed for DFS and BFS sepa-
+rately, indicating if there is a path between vertices according to that function. You can build the program
+with make or make prog and run it with ./prog .
+After you finish your DFS and BFS implementations, run this program and then answer the following
+questions.
+
+1. How is the graph stored in the provided code? Is it represented as an adjacency matrix or list?
+
+The in the provided code is represented as an edge list.
+
+2. Which of the 3 graphs are connected? How can you tell?
+
+I think graphs 2 and 3 are connected because the output shows all vertices
+being connected to one another through dfs or bfs. 
+
+3. Imagine that we ran each depth-first and breadth-first searches in the other direction (from desti-
+nation to source). Would the output change at all? Would the output change if the graphs were
+directed graphs?
+
+Two cases:
+
+a. Graphs are undirected
+The output would not change because the edges can be traversed
+backwards.
+
+b. Graphs are directed
+The output would change because edges would have to be accessed differently
+depending on their starting and endpoints.
+
+
+4. What are some pros and cons of DFS vs BFS? When would you use one over the other?
+
+DFS can take a long unfortunate route and need to backtrack.
+DFS can get lucky and find the route quickly.
+BFS may not find the route quickly but will always find it.
+BFS checks paths of length 1, 2, 3,... and is guaranteed to find the shortest
+route if it exists.
+If there is an infinite path, DFS may go down it and get stuck while BFS will
+no get stuck. Use BFS in this case.
+BFS uses more memory than DFS.
+
+5. What is the Big O execution time to determine if a vertex is reachable from another vertex?
+
+O(E), both cases are proportional to the number of edges E. 
